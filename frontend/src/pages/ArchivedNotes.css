@@ -1,0 +1,47 @@
+.archived-notes-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.page-header {
+    margin-bottom: 2rem;
+}
+
+.page-header h1 {
+    margin: 0;
+    color: #1f2937;
+    font-size: 2.5rem;
+}
+
+.page-subtitle {
+    color: #6b7280;
+    margin: 0.5rem 0 0 0;
+}
+
+.notes-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.loading,
+.error {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.error {
+    color: #dc2626;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 3rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    color: #6b7280;
+}
