@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import './CategoryManager.css';
 
 export const CategoryManager = ({ categories, onCreate, onUpdate, onDelete }) => {
     const [showForm, setShowForm] = useState(false);
@@ -39,61 +38,71 @@ export const CategoryManager = ({ categories, onCreate, onUpdate, onDelete }) =>
     };
 
     return (
-        <div className="category-manager">
-            <div className="category-header">
-                <h3>Categories</h3>
+        <div className="bg-white rounded-lg shadow-md p-6">
+            <div className="flex justify-between items-center mb-4">
+                <h3 className="text-lg font-semibold text-gray-900">Categories</h3>
                 <button
                     onClick={() => setShowForm(!showForm)}
-                    className="btn btn-primary btn-sm"
+                    className="px-4 py-2 bg-primary-500 text-white text-sm rounded-lg hover:bg-primary-600 transition-colors"
                 >
                     {showForm ? 'Cancel' : '+ New Category'}
                 </button>
             </div>
 
             {showForm && (
-                <form onSubmit={handleSubmit} className="category-form">
+                <form onSubmit={handleSubmit} className="bg-gray-50 rounded-lg p-4 mb-4 space-y-3">
                     <input
                         type="text"
                         placeholder="Category name"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         required
-                        className="category-input"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none"
                     />
-                    <div className="color-picker-wrapper">
-                        <label>Color:</label>
+                    <div className="flex items-center gap-3">
+                        <label className="text-sm text-gray-700 font-medium">Color:</label>
                         <input
                             type="color"
                             value={color}
                             onChange={(e) => setColor(e.target.value)}
-                            className="color-picker"
+                            className="w-12 h-10 border border-gray-300 rounded cursor-pointer"
                         />
                     </div>
-                    <div className="form-actions">
-                        <button type="submit" className="btn btn-primary btn-sm">
+                    <div className="flex gap-2">
+                        <button
+                            type="submit"
+                            className="px-4 py-2 bg-primary-500 text-white text-sm rounded-lg hover:bg-primary-600 transition-colors"
+                        >
                             {editingId ? 'Update' : 'Create'}
                         </button>
-                        <button type="button" onClick={handleCancel} className="btn btn-secondary btn-sm">
+                        <button
+                            type="button"
+                            onClick={handleCancel}
+                            className="px-4 py-2 bg-gray-200 text-gray-700 text-sm rounded-lg hover:bg-gray-300 transition-colors"
+                        >
                             Cancel
                         </button>
                     </div>
                 </form>
             )}
 
-            <div className="category-list">
+            <div className="space-y-2">
                 {categories.map(category => (
-                    <div key={category.id} className="category-item">
-                        <div className="category-info">
+                    <div
+                        key={category.id}
+                        className="flex justify-between items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+                    >
+                        <div className="flex items-center gap-3">
                             <span
-                                className="category-color-dot"
+                                className="w-4 h-4 rounded-full"
                                 style={{ backgroundColor: category.color || '#6366f1' }}
                             />
-                            <span className="category-name">{category.name}</span>
+                            <span className="font-medium text-gray-900">{category.name}</span>
                         </div>
-                        <div className="category-actions">
+                        <div className="flex gap-2">
                             <button
                                 onClick={() => handleEdit(category)}
-                                className="btn btn-secondary btn-xs"
+                                className="px-3 py-1 bg-gray-200 text-gray-700 text-xs rounded hover:bg-gray-300 transition-colors"
                             >
                                 Edit
                             </button>
@@ -103,7 +112,7 @@ export const CategoryManager = ({ categories, onCreate, onUpdate, onDelete }) =>
                                         onDelete(category.id);
                                     }
                                 }}
-                                className="btn btn-danger btn-xs"
+                                className="px-3 py-1 bg-red-500 text-white text-xs rounded hover:bg-red-600 transition-colors"
                             >
                                 Delete
                             </button>
